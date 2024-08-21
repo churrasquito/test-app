@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     options {
         timestamps()
         pipelineTriggers {
@@ -31,7 +32,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/') {
-                        docker.image("$DOCKER_USER/flask-restapi:${env.GIT_COMMIT}").withCredentials([usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        docker.image("$DOCKER_USER/flask-restapi:${env.GIT_COMMIT}").withCredentials([usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER.PASSWORD')]) {
                             push()
                         }
                     }
