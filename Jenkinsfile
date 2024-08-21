@@ -1,6 +1,13 @@
 pipeline {
   agent any
-
+    options {
+        timestamps()
+        pipelineTriggers {
+            githubPush() {
+                branchFilter = 'main'
+            }
+        }
+    }
   credentials {
     usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')
   }
