@@ -8,6 +8,7 @@ pipeline {
             }
         }
     }
+
     credentials {
         usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')
     }
