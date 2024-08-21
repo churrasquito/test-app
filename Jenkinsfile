@@ -2,15 +2,8 @@ pipeline {
     agent any
     options {
         pipelineTriggers {
-            githubPush() {
-                branchFilter = 'main' // Puedes cambiar 'main' por la rama que desees
-            }
+            githubPush()
         }
-    }
-    credentials {
-        usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')
-    }
-
     stages {
         stage('Checkout') {
             steps {
