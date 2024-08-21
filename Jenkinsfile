@@ -1,15 +1,12 @@
 pipeline {
     agent any
-
     options {
-        timestamps()
         pipelineTriggers {
             githubPush() {
-                branchFilter = 'main'
+                branchFilter = 'main' // Puedes cambiar 'main' por la rama que desees
             }
         }
     }
-
     credentials {
         usernamePassword(credentialsId: 'dockerhub-PAT', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')
     }
